@@ -1,0 +1,126 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Planning.Site" %>
+
+<!doctype html>
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>STC Planning</title>
+    <link rel="stylesheet" href="~/styles.css" type="text/css" />
+
+    <script type="text/javascript">
+        function openInNewTab() {
+            window.document.forms[0].target = '_blank';
+            setTimeout(function () { window.document.forms[0].target = ''; }, 0);
+
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div style="padding-top: 5px; padding-left: 65px">
+                <link rel="icon" type="image/ico" style="float: left;" href="~/images/logo.png"/>
+                <a href="../home.aspx"><span>
+                    <asp:Image runat="server" ImageUrl="~/images/logo.png" AlternateText="STC" Width="100px" Height="100px" />
+                </span></a>
+                <%--<h2>Plannng Department</h2>--%>
+                <div style="float:right;margin-top:8px;font-size:18px;margin-right:80px;width:200px;height:80px;text-align:center;">
+                <div style="margin-top:5px;">
+                    وزارة الدفاع
+                </div>
+                 <div>
+                   مركز تكنولوجيا الفضاء
+                </div>
+                 <div >
+                    فرع شئون ضباط
+                </div></div>
+            </div>
+            <% if (!Page.ToString().ToLower().Contains("login"))
+               { %>
+            <div style="float: left; margin-left: 65px;">
+                <nav>
+                    <ul>
+                        <li class="start selected">
+                            <a href="../Logout.aspx">خروج</a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <% if (!Page.ToString().ToLower().Contains("admin"))
+               { %>
+            <nav>
+                <div class="width">
+                    <ul>
+                      <li class="<%= checkSelected("home") %>"><a href="/Home.aspx">الصفحة الرئيسية</a></li>
+                        <% if (int.Parse(Session["AccountType"]+"") != 2)
+                           { %>
+                     <!--   <li class="<%= checkSelected("companies") %>"><a href="/Companies/ViewCompanies.aspx">الشركات</a></li>
+                        <li class="<%= checkSelected("expert") %>"><a href="/Experts/ViewExperts.aspx">الخبراء الأجانب</a></li> -->
+                        <% } %>
+                        <% if (int.Parse(Session["AccountType"] + "") != 3)
+                           { %>
+                      <!--  <div class="dropdown">
+                            <button class="dropbtn" style="<%= checkSelected("message") %>">المكاتبات</button>
+                            <div class="dropdown-content">
+                                <a href="/Messages/Incoming.aspx">المكاتبات الواردة</a>
+                                <a href="/Messages/Outgoing.aspx">المكاتبات الصادرة</a>
+                            </div>
+                        </div> -->
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
+
+           <% } else { %>
+                 <nav>
+        <div class="width">
+    		<ul>
+        		<li class="<%= checkSelected("user") %>"><a href="/Admin/UsersPage.aspx">مستخدمي البرنامج</a></li>
+
+                <li class="<%= checkSelected("tmam") %>"><a href="/Admin/Tmam.aspx">التمام</a></li>
+                <li class="<%= checkSelected("talabat") %>"><a href="/Admin/talabat.aspx">طلبات</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn" style="<%= checkSelected("wazzaf") %>">الوظايف</button>
+                    <div class="dropdown-content">
+                        <a href="/Admin/jobInfo.aspx">عرض الوظايف</a>
+                        <a href="/Admin/SecInfo.aspx">عرض القطاعات</a>
+                        <a href="/Admin/DirInfo.aspx">عرض الإتجاهات</a>
+                        <a href="/Admin/BRInfo.aspx">عرض الفروع</a>
+                        <a href="/Admin/sectionsInfo.aspx">عرض السكاشن</a>
+                    </div>
+                </div>
+                  <li class="<%= checkSelected("field") %>"><a href="/Admin/OFFICERS.aspx">الضباط</a></li>
+                
+
+            <!--  <li class="<%= checkSelected("department") %>"><a href="/Admin/DepartmentsPage.aspx">أفرع وأقسام المركز</a></li>
+               <li class="<%= checkSelected("unit") %>"><a href="/Admin/UnitsPage.aspx">وحدات القوات المسلحة</a></li>
+                <li class="<%= checkSelected("categor") %>"><a href="/Admin/Categories.aspx">مواضيع المكاتبات</a></li>
+                <li class="<%= checkSelected("image") %>"><a href="/Admin/ImagesPage.aspx">صور الصفحة الرئيسية</a></li>
+                -->
+        	</ul>
+	</div>
+    </nav>
+
+    <% } %>
+    <% } %>
+        </header>
+
+
+
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <footer style="position: inherit; bottom: 0; width: 100%;">
+            <div class="footer-content width">
+                <div class="clear"></div>
+            </div>
+<%--            <div class="footer-bottom">
+                <!--  <p>&copy; YourSite 2013. <a href="http://zypopwebtemplates.com/">Free CSS Website Templates</a> by ZyPOP</p> -->
+            </div>--%>
+        </footer>
+
+    </div>
+</body>
+</html>

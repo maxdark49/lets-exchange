@@ -1,0 +1,1085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PlanningDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BRANCHES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sector_id" Type="int" Nullable="false" />
+          <Property Name="job_info_id" Type="int" />
+        </EntityType>
+        <EntityType Name="DIRECTIONS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="d_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shawon .dbo.ImagesHome' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ImagesHome">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="details" Type="nvarchar" MaxLength="500" />
+          <Property Name="path" Type="nvarchar" MaxLength="300" />
+          <Property Name="img_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="job_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="job_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sector_id" Type="int" />
+          <Property Name="direction_id" Type="int" />
+          <Property Name="branch_id" Type="int" />
+          <Property Name="section_id" Type="int" />
+          <Property Name="top_assossiated" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="leaders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rank" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="jobtitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MISSION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="officer_id" Type="int" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="destination" Type="varchar" MaxLength="100" />
+          <Property Name="purpose" Type="varchar" MaxLength="100" />
+          <Property Name="mission_start" Type="date" />
+          <Property Name="mission_end" Type="date" />
+          <Property Name="mission_start_time" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mission_end_time" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="companion_id" Type="int" />
+        </EntityType>
+        <EntityType Name="NOBTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="officer_id" Type="int" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="nobt_date" Type="date" Nullable="false" />
+          <Property Name="exchanged" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOBTE_EXCHANGE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nobtid" Type="int" Nullable="false" />
+          <Property Name="officer1_id" Type="int" Nullable="false" />
+          <Property Name="officer2_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OFFICER">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rank" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="O_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="telephone" Type="nvarchar(max)" />
+          <Property Name="job_id" Type="int" />
+          <Property Name="weapon_id" Type="int" />
+          <Property Name="study_id" Type="int" />
+          <Property Name="martial_status_id" Type="int" />
+          <Property Name="olde" Type="int" />
+        </EntityType>
+        <EntityType Name="SECTIONS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="branch_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SECTORS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SR_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="officer_id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="state" Type="int" />
+        </EntityType>
+        <EntityType Name="Tmam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="rank" Type="nvarchar" MaxLength="50" />
+          <Property Name="TO_name" Type="nvarchar(max)" />
+          <Property Name="dayTmam" Type="nvarchar(max)" />
+          <Property Name="t_date" Type="date" />
+        </EntityType>
+        <EntityType Name="TmamType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="type_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="value" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="job" Type="nvarchar" MaxLength="150" />
+          <Property Name="password" Type="nvarchar" MaxLength="150" />
+          <Property Name="is_admin" Type="bit" />
+          <Property Name="account_type" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="VACATION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="officer_id" Type="int" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="vacation_start" Type="date" Nullable="false" />
+          <Property Name="vacation_end" Type="date" Nullable="false" />
+          <Property Name="duration" Type="int" Nullable="false" />
+          <Property Name="replacement_id" Type="int" />
+        </EntityType>
+        <EntityType Name="WEAPONS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Weapon_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BRANCHES_job_info">
+          <End Role="job_info" Type="Self.job_info" Multiplicity="0..1" />
+          <End Role="BRANCHES" Type="Self.BRANCHES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BRANCHES">
+              <PropertyRef Name="job_info_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BRANCHES_SECTORS">
+          <End Role="SECTORS" Type="Self.SECTORS" Multiplicity="1" />
+          <End Role="BRANCHES" Type="Self.BRANCHES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTORS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BRANCHES">
+              <PropertyRef Name="sector_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_BRANCHES">
+          <End Role="BRANCHES" Type="Self.BRANCHES" Multiplicity="0..1" />
+          <End Role="job_info" Type="Self.job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCHES">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_DIRECTIONS">
+          <End Role="DIRECTIONS" Type="Self.DIRECTIONS" Multiplicity="0..1" />
+          <End Role="job_info" Type="Self.job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIRECTIONS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="direction_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_SECTIONS">
+          <End Role="SECTIONS" Type="Self.SECTIONS" Multiplicity="0..1" />
+          <End Role="job_info" Type="Self.job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTIONS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="section_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_SECTORS">
+          <End Role="SECTORS" Type="Self.SECTORS" Multiplicity="0..1" />
+          <End Role="job_info" Type="Self.job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTORS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="sector_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MISSION_OFFICER">
+          <End Role="OFFICER" Type="Self.OFFICER" Multiplicity="1" />
+          <End Role="MISSION" Type="Self.MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MISSION">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nobte_exchange_nobte">
+          <End Role="NOBTE" Type="Self.NOBTE" Multiplicity="1" />
+          <End Role="NOBTE_EXCHANGE" Type="Self.NOBTE_EXCHANGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOBTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NOBTE_EXCHANGE">
+              <PropertyRef Name="nobtid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nobte_OFFICER">
+          <End Role="OFFICER" Type="Self.OFFICER" Multiplicity="1" />
+          <End Role="NOBTE" Type="Self.NOBTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NOBTE">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OFFICER_job_info">
+          <End Role="job_info" Type="Self.job_info" Multiplicity="0..1" />
+          <End Role="OFFICER" Type="Self.OFFICER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OFFICER">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OFFICER_WEAPONS">
+          <End Role="WEAPONS" Type="Self.WEAPONS" Multiplicity="0..1" />
+          <End Role="OFFICER" Type="Self.OFFICER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WEAPONS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OFFICER">
+              <PropertyRef Name="weapon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECTIONS_BRANCHES">
+          <End Role="BRANCHES" Type="Self.BRANCHES" Multiplicity="1" />
+          <End Role="SECTIONS" Type="Self.SECTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCHES">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SECTIONS">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_state_OFFICER">
+          <End Role="OFFICER" Type="Self.OFFICER" Multiplicity="1" />
+          <End Role="STATE" Type="Self.STATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="STATE">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VACATION_OFFICER">
+          <End Role="OFFICER" Type="Self.OFFICER" Multiplicity="1" />
+          <End Role="VACATION" Type="Self.VACATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VACATION">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PlanningDBModelStoreContainer">
+          <EntitySet Name="BRANCHES" EntityType="Self.BRANCHES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIRECTIONS" EntityType="Self.DIRECTIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="job_info" EntityType="Self.job_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="leaders" EntityType="Self.leaders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MISSION" EntityType="Self.MISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOBTE" EntityType="Self.NOBTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOBTE_EXCHANGE" EntityType="Self.NOBTE_EXCHANGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OFFICER" EntityType="Self.OFFICER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SECTIONS" EntityType="Self.SECTIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SECTORS" EntityType="Self.SECTORS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATE" EntityType="Self.STATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tmam" EntityType="Self.Tmam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TmamType" EntityType="Self.TmamType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VACATION" EntityType="Self.VACATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WEAPONS" EntityType="Self.WEAPONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagesHome" EntityType="Self.ImagesHome" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ImagesHome].[id] AS [id], 
+    [ImagesHome].[title] AS [title], 
+    [ImagesHome].[details] AS [details], 
+    [ImagesHome].[path] AS [path], 
+    [ImagesHome].[img_name] AS [img_name]
+    FROM [dbo].[ImagesHome] AS [ImagesHome]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BRANCHES_job_info" Association="Self.FK_BRANCHES_job_info">
+            <End Role="job_info" EntitySet="job_info" />
+            <End Role="BRANCHES" EntitySet="BRANCHES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BRANCHES_SECTORS" Association="Self.FK_BRANCHES_SECTORS">
+            <End Role="SECTORS" EntitySet="SECTORS" />
+            <End Role="BRANCHES" EntitySet="BRANCHES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_BRANCHES" Association="Self.FK_job_info_BRANCHES">
+            <End Role="BRANCHES" EntitySet="BRANCHES" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_DIRECTIONS" Association="Self.FK_job_info_DIRECTIONS">
+            <End Role="DIRECTIONS" EntitySet="DIRECTIONS" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_SECTIONS" Association="Self.FK_job_info_SECTIONS">
+            <End Role="SECTIONS" EntitySet="SECTIONS" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_SECTORS" Association="Self.FK_job_info_SECTORS">
+            <End Role="SECTORS" EntitySet="SECTORS" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MISSION_OFFICER" Association="Self.FK_MISSION_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICER" />
+            <End Role="MISSION" EntitySet="MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nobte_exchange_nobte" Association="Self.FK_nobte_exchange_nobte">
+            <End Role="NOBTE" EntitySet="NOBTE" />
+            <End Role="NOBTE_EXCHANGE" EntitySet="NOBTE_EXCHANGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nobte_OFFICER" Association="Self.FK_nobte_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICER" />
+            <End Role="NOBTE" EntitySet="NOBTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OFFICER_job_info" Association="Self.FK_OFFICER_job_info">
+            <End Role="job_info" EntitySet="job_info" />
+            <End Role="OFFICER" EntitySet="OFFICER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OFFICER_WEAPONS" Association="Self.FK_OFFICER_WEAPONS">
+            <End Role="WEAPONS" EntitySet="WEAPONS" />
+            <End Role="OFFICER" EntitySet="OFFICER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECTIONS_BRANCHES" Association="Self.FK_SECTIONS_BRANCHES">
+            <End Role="BRANCHES" EntitySet="BRANCHES" />
+            <End Role="SECTIONS" EntitySet="SECTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_state_OFFICER" Association="Self.FK_state_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICER" />
+            <End Role="STATE" EntitySet="STATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VACATION_OFFICER" Association="Self.FK_VACATION_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICER" />
+            <End Role="VACATION" EntitySet="VACATION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlanningDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PlanningDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BRANCHES" EntityType="PlanningDBModel.BRANCH" />
+          <EntitySet Name="DIRECTIONS" EntityType="PlanningDBModel.DIRECTION" />
+          <EntitySet Name="job_info" EntityType="PlanningDBModel.job_info" />
+          <EntitySet Name="leaders" EntityType="PlanningDBModel.leader" />
+          <EntitySet Name="MISSIONs" EntityType="PlanningDBModel.MISSION" />
+          <EntitySet Name="NOBTEs" EntityType="PlanningDBModel.NOBTE" />
+          <EntitySet Name="NOBTE_EXCHANGE" EntityType="PlanningDBModel.NOBTE_EXCHANGE" />
+          <EntitySet Name="OFFICERs" EntityType="PlanningDBModel.OFFICER" />
+          <EntitySet Name="SECTIONS" EntityType="PlanningDBModel.SECTION" />
+          <EntitySet Name="SECTORS" EntityType="PlanningDBModel.SECTOR" />
+          <EntitySet Name="STATEs" EntityType="PlanningDBModel.STATE" />
+          <EntitySet Name="Tmams" EntityType="PlanningDBModel.Tmam" />
+          <EntitySet Name="TmamTypes" EntityType="PlanningDBModel.TmamType" />
+          <EntitySet Name="Users" EntityType="PlanningDBModel.User" />
+          <EntitySet Name="VACATIONs" EntityType="PlanningDBModel.VACATION" />
+          <EntitySet Name="WEAPONS" EntityType="PlanningDBModel.WEAPON" />
+          <EntitySet Name="ImagesHomes" EntityType="PlanningDBModel.ImagesHome" />
+          <AssociationSet Name="FK_BRANCHES_job_info" Association="PlanningDBModel.FK_BRANCHES_job_info">
+            <End Role="job_info" EntitySet="job_info" />
+            <End Role="BRANCH" EntitySet="BRANCHES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BRANCHES_SECTORS" Association="PlanningDBModel.FK_BRANCHES_SECTORS">
+            <End Role="SECTOR" EntitySet="SECTORS" />
+            <End Role="BRANCH" EntitySet="BRANCHES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_BRANCHES" Association="PlanningDBModel.FK_job_info_BRANCHES">
+            <End Role="BRANCH" EntitySet="BRANCHES" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECTIONS_BRANCHES" Association="PlanningDBModel.FK_SECTIONS_BRANCHES">
+            <End Role="BRANCH" EntitySet="BRANCHES" />
+            <End Role="SECTION" EntitySet="SECTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_DIRECTIONS" Association="PlanningDBModel.FK_job_info_DIRECTIONS">
+            <End Role="DIRECTION" EntitySet="DIRECTIONS" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_SECTIONS" Association="PlanningDBModel.FK_job_info_SECTIONS">
+            <End Role="SECTION" EntitySet="SECTIONS" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_job_info_SECTORS" Association="PlanningDBModel.FK_job_info_SECTORS">
+            <End Role="SECTOR" EntitySet="SECTORS" />
+            <End Role="job_info" EntitySet="job_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OFFICER_job_info" Association="PlanningDBModel.FK_OFFICER_job_info">
+            <End Role="job_info" EntitySet="job_info" />
+            <End Role="OFFICER" EntitySet="OFFICERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MISSION_OFFICER" Association="PlanningDBModel.FK_MISSION_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICERs" />
+            <End Role="MISSION" EntitySet="MISSIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nobte_exchange_nobte" Association="PlanningDBModel.FK_nobte_exchange_nobte">
+            <End Role="NOBTE" EntitySet="NOBTEs" />
+            <End Role="NOBTE_EXCHANGE" EntitySet="NOBTE_EXCHANGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nobte_OFFICER" Association="PlanningDBModel.FK_nobte_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICERs" />
+            <End Role="NOBTE" EntitySet="NOBTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OFFICER_WEAPONS" Association="PlanningDBModel.FK_OFFICER_WEAPONS">
+            <End Role="WEAPON" EntitySet="WEAPONS" />
+            <End Role="OFFICER" EntitySet="OFFICERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_state_OFFICER" Association="PlanningDBModel.FK_state_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICERs" />
+            <End Role="STATE" EntitySet="STATEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VACATION_OFFICER" Association="PlanningDBModel.FK_VACATION_OFFICER">
+            <End Role="OFFICER" EntitySet="OFFICERs" />
+            <End Role="VACATION" EntitySet="VACATIONs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BRANCH">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sector_id" Type="Int32" Nullable="false" />
+          <Property Name="job_info_id" Type="Int32" />
+          <NavigationProperty Name="job_info" Relationship="PlanningDBModel.FK_BRANCHES_job_info" FromRole="BRANCH" ToRole="job_info" />
+          <NavigationProperty Name="SECTOR" Relationship="PlanningDBModel.FK_BRANCHES_SECTORS" FromRole="BRANCH" ToRole="SECTOR" />
+          <NavigationProperty Name="job_info1" Relationship="PlanningDBModel.FK_job_info_BRANCHES" FromRole="BRANCH" ToRole="job_info" />
+          <NavigationProperty Name="SECTIONS" Relationship="PlanningDBModel.FK_SECTIONS_BRANCHES" FromRole="BRANCH" ToRole="SECTION" />
+        </EntityType>
+        <EntityType Name="DIRECTION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="d_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="job_info" Relationship="PlanningDBModel.FK_job_info_DIRECTIONS" FromRole="DIRECTION" ToRole="job_info" />
+        </EntityType>
+        <EntityType Name="job_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="job_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sector_id" Type="Int32" />
+          <Property Name="direction_id" Type="Int32" />
+          <Property Name="branch_id" Type="Int32" />
+          <Property Name="section_id" Type="Int32" />
+          <Property Name="top_assossiated" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BRANCHES" Relationship="PlanningDBModel.FK_BRANCHES_job_info" FromRole="job_info" ToRole="BRANCH" />
+          <NavigationProperty Name="BRANCH" Relationship="PlanningDBModel.FK_job_info_BRANCHES" FromRole="job_info" ToRole="BRANCH" />
+          <NavigationProperty Name="DIRECTION" Relationship="PlanningDBModel.FK_job_info_DIRECTIONS" FromRole="job_info" ToRole="DIRECTION" />
+          <NavigationProperty Name="SECTION" Relationship="PlanningDBModel.FK_job_info_SECTIONS" FromRole="job_info" ToRole="SECTION" />
+          <NavigationProperty Name="SECTOR" Relationship="PlanningDBModel.FK_job_info_SECTORS" FromRole="job_info" ToRole="SECTOR" />
+          <NavigationProperty Name="OFFICERs" Relationship="PlanningDBModel.FK_OFFICER_job_info" FromRole="job_info" ToRole="OFFICER" />
+        </EntityType>
+        <EntityType Name="leader">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rank" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="jobtitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MISSION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="officer_id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="destination" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="purpose" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mission_start" Type="DateTime" Precision="0" />
+          <Property Name="mission_end" Type="DateTime" Precision="0" />
+          <Property Name="mission_start_time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mission_end_time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companion_id" Type="Int32" />
+          <NavigationProperty Name="OFFICER" Relationship="PlanningDBModel.FK_MISSION_OFFICER" FromRole="MISSION" ToRole="OFFICER" />
+        </EntityType>
+        <EntityType Name="NOBTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="officer_id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="nobt_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="exchanged" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NOBTE_EXCHANGE" Relationship="PlanningDBModel.FK_nobte_exchange_nobte" FromRole="NOBTE" ToRole="NOBTE_EXCHANGE" />
+          <NavigationProperty Name="OFFICER" Relationship="PlanningDBModel.FK_nobte_OFFICER" FromRole="NOBTE" ToRole="OFFICER" />
+        </EntityType>
+        <EntityType Name="NOBTE_EXCHANGE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nobtid" Type="Int32" Nullable="false" />
+          <Property Name="officer1_id" Type="Int32" Nullable="false" />
+          <Property Name="officer2_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NOBTE" Relationship="PlanningDBModel.FK_nobte_exchange_nobte" FromRole="NOBTE_EXCHANGE" ToRole="NOBTE" />
+        </EntityType>
+        <EntityType Name="OFFICER">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rank" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="O_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="job_id" Type="Int32" />
+          <Property Name="weapon_id" Type="Int32" />
+          <Property Name="study_id" Type="Int32" />
+          <Property Name="martial_status_id" Type="Int32" />
+          <Property Name="olde" Type="Int32" />
+          <NavigationProperty Name="job_info" Relationship="PlanningDBModel.FK_OFFICER_job_info" FromRole="OFFICER" ToRole="job_info" />
+          <NavigationProperty Name="MISSIONs" Relationship="PlanningDBModel.FK_MISSION_OFFICER" FromRole="OFFICER" ToRole="MISSION" />
+          <NavigationProperty Name="NOBTEs" Relationship="PlanningDBModel.FK_nobte_OFFICER" FromRole="OFFICER" ToRole="NOBTE" />
+          <NavigationProperty Name="WEAPON" Relationship="PlanningDBModel.FK_OFFICER_WEAPONS" FromRole="OFFICER" ToRole="WEAPON" />
+          <NavigationProperty Name="STATEs" Relationship="PlanningDBModel.FK_state_OFFICER" FromRole="OFFICER" ToRole="STATE" />
+          <NavigationProperty Name="VACATIONs" Relationship="PlanningDBModel.FK_VACATION_OFFICER" FromRole="OFFICER" ToRole="VACATION" />
+        </EntityType>
+        <EntityType Name="SECTION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BRANCH" Relationship="PlanningDBModel.FK_SECTIONS_BRANCHES" FromRole="SECTION" ToRole="BRANCH" />
+          <NavigationProperty Name="job_info" Relationship="PlanningDBModel.FK_job_info_SECTIONS" FromRole="SECTION" ToRole="job_info" />
+        </EntityType>
+        <EntityType Name="SECTOR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SR_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BRANCHES" Relationship="PlanningDBModel.FK_BRANCHES_SECTORS" FromRole="SECTOR" ToRole="BRANCH" />
+          <NavigationProperty Name="job_info" Relationship="PlanningDBModel.FK_job_info_SECTORS" FromRole="SECTOR" ToRole="job_info" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="officer_id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="state1" Type="Int32" />
+          <NavigationProperty Name="OFFICER" Relationship="PlanningDBModel.FK_state_OFFICER" FromRole="STATE" ToRole="OFFICER" />
+        </EntityType>
+        <EntityType Name="Tmam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="rank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TO_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dayTmam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="t_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TmamType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="value" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="job" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="is_admin" Type="Boolean" />
+          <Property Name="account_type" Type="Byte" />
+        </EntityType>
+        <EntityType Name="VACATION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="officer_id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="vacation_start" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="vacation_end" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="duration" Type="Int32" Nullable="false" />
+          <Property Name="replacement_id" Type="Int32" />
+          <NavigationProperty Name="OFFICER" Relationship="PlanningDBModel.FK_VACATION_OFFICER" FromRole="VACATION" ToRole="OFFICER" />
+        </EntityType>
+        <EntityType Name="WEAPON">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weapon_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OFFICERs" Relationship="PlanningDBModel.FK_OFFICER_WEAPONS" FromRole="WEAPON" ToRole="OFFICER" />
+        </EntityType>
+        <EntityType Name="ImagesHome">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="path" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="img_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_BRANCHES_job_info">
+          <End Type="PlanningDBModel.job_info" Role="job_info" Multiplicity="0..1" />
+          <End Type="PlanningDBModel.BRANCH" Role="BRANCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BRANCH">
+              <PropertyRef Name="job_info_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BRANCHES_SECTORS">
+          <End Type="PlanningDBModel.SECTOR" Role="SECTOR" Multiplicity="1" />
+          <End Type="PlanningDBModel.BRANCH" Role="BRANCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTOR">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BRANCH">
+              <PropertyRef Name="sector_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_BRANCHES">
+          <End Type="PlanningDBModel.BRANCH" Role="BRANCH" Multiplicity="0..1" />
+          <End Type="PlanningDBModel.job_info" Role="job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECTIONS_BRANCHES">
+          <End Type="PlanningDBModel.BRANCH" Role="BRANCH" Multiplicity="1" />
+          <End Type="PlanningDBModel.SECTION" Role="SECTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANCH">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SECTION">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_DIRECTIONS">
+          <End Type="PlanningDBModel.DIRECTION" Role="DIRECTION" Multiplicity="0..1" />
+          <End Type="PlanningDBModel.job_info" Role="job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIRECTION">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="direction_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_SECTIONS">
+          <End Type="PlanningDBModel.SECTION" Role="SECTION" Multiplicity="0..1" />
+          <End Type="PlanningDBModel.job_info" Role="job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTION">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="section_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_job_info_SECTORS">
+          <End Type="PlanningDBModel.SECTOR" Role="SECTOR" Multiplicity="0..1" />
+          <End Type="PlanningDBModel.job_info" Role="job_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTOR">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job_info">
+              <PropertyRef Name="sector_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OFFICER_job_info">
+          <End Type="PlanningDBModel.job_info" Role="job_info" Multiplicity="0..1" />
+          <End Type="PlanningDBModel.OFFICER" Role="OFFICER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OFFICER">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MISSION_OFFICER">
+          <End Type="PlanningDBModel.OFFICER" Role="OFFICER" Multiplicity="1" />
+          <End Type="PlanningDBModel.MISSION" Role="MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MISSION">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nobte_exchange_nobte">
+          <End Type="PlanningDBModel.NOBTE" Role="NOBTE" Multiplicity="1" />
+          <End Type="PlanningDBModel.NOBTE_EXCHANGE" Role="NOBTE_EXCHANGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOBTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NOBTE_EXCHANGE">
+              <PropertyRef Name="nobtid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nobte_OFFICER">
+          <End Type="PlanningDBModel.OFFICER" Role="OFFICER" Multiplicity="1" />
+          <End Type="PlanningDBModel.NOBTE" Role="NOBTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NOBTE">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OFFICER_WEAPONS">
+          <End Type="PlanningDBModel.WEAPON" Role="WEAPON" Multiplicity="0..1" />
+          <End Type="PlanningDBModel.OFFICER" Role="OFFICER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WEAPON">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OFFICER">
+              <PropertyRef Name="weapon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_state_OFFICER">
+          <End Type="PlanningDBModel.OFFICER" Role="OFFICER" Multiplicity="1" />
+          <End Type="PlanningDBModel.STATE" Role="STATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="STATE">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VACATION_OFFICER">
+          <End Type="PlanningDBModel.OFFICER" Role="OFFICER" Multiplicity="1" />
+          <End Type="PlanningDBModel.VACATION" Role="VACATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICER">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VACATION">
+              <PropertyRef Name="officer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PlanningDBModelStoreContainer" CdmEntityContainer="PlanningDBEntities">
+          <EntitySetMapping Name="BRANCHES">
+            <EntityTypeMapping TypeName="PlanningDBModel.BRANCH">
+              <MappingFragment StoreEntitySet="BRANCHES">
+                <ScalarProperty Name="job_info_id" ColumnName="job_info_id" />
+                <ScalarProperty Name="sector_id" ColumnName="sector_id" />
+                <ScalarProperty Name="B_name" ColumnName="B_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIRECTIONS">
+            <EntityTypeMapping TypeName="PlanningDBModel.DIRECTION">
+              <MappingFragment StoreEntitySet="DIRECTIONS">
+                <ScalarProperty Name="d_name" ColumnName="d_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="job_info">
+            <EntityTypeMapping TypeName="PlanningDBModel.job_info">
+              <MappingFragment StoreEntitySet="job_info">
+                <ScalarProperty Name="top_assossiated" ColumnName="top_assossiated" />
+                <ScalarProperty Name="section_id" ColumnName="section_id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="direction_id" ColumnName="direction_id" />
+                <ScalarProperty Name="sector_id" ColumnName="sector_id" />
+                <ScalarProperty Name="job_name" ColumnName="job_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="leaders">
+            <EntityTypeMapping TypeName="PlanningDBModel.leader">
+              <MappingFragment StoreEntitySet="leaders">
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MISSIONs">
+            <EntityTypeMapping TypeName="PlanningDBModel.MISSION">
+              <MappingFragment StoreEntitySet="MISSION">
+                <ScalarProperty Name="companion_id" ColumnName="companion_id" />
+                <ScalarProperty Name="mission_end_time" ColumnName="mission_end_time" />
+                <ScalarProperty Name="mission_start_time" ColumnName="mission_start_time" />
+                <ScalarProperty Name="mission_end" ColumnName="mission_end" />
+                <ScalarProperty Name="mission_start" ColumnName="mission_start" />
+                <ScalarProperty Name="purpose" ColumnName="purpose" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="officer_id" ColumnName="officer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOBTEs">
+            <EntityTypeMapping TypeName="PlanningDBModel.NOBTE">
+              <MappingFragment StoreEntitySet="NOBTE">
+                <ScalarProperty Name="exchanged" ColumnName="exchanged" />
+                <ScalarProperty Name="nobt_date" ColumnName="nobt_date" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="officer_id" ColumnName="officer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOBTE_EXCHANGE">
+            <EntityTypeMapping TypeName="PlanningDBModel.NOBTE_EXCHANGE">
+              <MappingFragment StoreEntitySet="NOBTE_EXCHANGE">
+                <ScalarProperty Name="officer2_id" ColumnName="officer2_id" />
+                <ScalarProperty Name="officer1_id" ColumnName="officer1_id" />
+                <ScalarProperty Name="nobtid" ColumnName="nobtid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OFFICERs">
+            <EntityTypeMapping TypeName="PlanningDBModel.OFFICER">
+              <MappingFragment StoreEntitySet="OFFICER">
+                <ScalarProperty Name="olde" ColumnName="olde" />
+                <ScalarProperty Name="martial_status_id" ColumnName="martial_status_id" />
+                <ScalarProperty Name="study_id" ColumnName="study_id" />
+                <ScalarProperty Name="weapon_id" ColumnName="weapon_id" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="O_name" ColumnName="O_name" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECTIONS">
+            <EntityTypeMapping TypeName="PlanningDBModel.SECTION">
+              <MappingFragment StoreEntitySet="SECTIONS">
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="S_name" ColumnName="S_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECTORS">
+            <EntityTypeMapping TypeName="PlanningDBModel.SECTOR">
+              <MappingFragment StoreEntitySet="SECTORS">
+                <ScalarProperty Name="SR_name" ColumnName="SR_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATEs">
+            <EntityTypeMapping TypeName="PlanningDBModel.STATE">
+              <MappingFragment StoreEntitySet="STATE">
+                <ScalarProperty Name="state1" ColumnName="state" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="officer_id" ColumnName="officer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tmams">
+            <EntityTypeMapping TypeName="PlanningDBModel.Tmam">
+              <MappingFragment StoreEntitySet="Tmam">
+                <ScalarProperty Name="t_date" ColumnName="t_date" />
+                <ScalarProperty Name="dayTmam" ColumnName="dayTmam" />
+                <ScalarProperty Name="TO_name" ColumnName="TO_name" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TmamTypes">
+            <EntityTypeMapping TypeName="PlanningDBModel.TmamType">
+              <MappingFragment StoreEntitySet="TmamType">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PlanningDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="account_type" ColumnName="account_type" />
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VACATIONs">
+            <EntityTypeMapping TypeName="PlanningDBModel.VACATION">
+              <MappingFragment StoreEntitySet="VACATION">
+                <ScalarProperty Name="replacement_id" ColumnName="replacement_id" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="vacation_end" ColumnName="vacation_end" />
+                <ScalarProperty Name="vacation_start" ColumnName="vacation_start" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="officer_id" ColumnName="officer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WEAPONS">
+            <EntityTypeMapping TypeName="PlanningDBModel.WEAPON">
+              <MappingFragment StoreEntitySet="WEAPONS">
+                <ScalarProperty Name="Weapon_name" ColumnName="Weapon_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagesHomes">
+            <EntityTypeMapping TypeName="PlanningDBModel.ImagesHome">
+              <MappingFragment StoreEntitySet="ImagesHome">
+                <ScalarProperty Name="img_name" ColumnName="img_name" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
