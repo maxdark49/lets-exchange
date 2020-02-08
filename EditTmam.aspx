@@ -12,7 +12,7 @@
                         <ContentTemplate> 
                         <p>
                         <label for="rank">الإســـــم:</label>
-                        <asp:Label ID="Label5" runat="server" Text="Label" Visible="true">Name is Required ! (يجب أن يكون الأسم ثلاثيا)</asp:Label>
+                        <asp:Label ID="Label5" runat="server" Text="Label" Visible="true">Name is Required ! (يجب أن يكون الأسم ثلاثيًًاً)</asp:Label>
                       
                         </p>
 
